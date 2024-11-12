@@ -1,3 +1,5 @@
+import MyEditor from "./MyEditor";
+
 // components/CodeEditorPanel.js
 export default function CodeEditorPanel() {
   return (
@@ -19,10 +21,15 @@ export default function CodeEditorPanel() {
         </div>
       </div>
       <div className="h-[90%] pb-10">
-        <textarea
+        
+        {/* <textarea
+
           className="w-full h-full p-4 border border-blue-200 resize-none rounded-md"
-          placeholder="// Write your code here"
-        />
+          placeholder="// Write your code here" 
+          
+        /> */}
+        <MyEditor/>
+        
       </div>
     </div>
   );

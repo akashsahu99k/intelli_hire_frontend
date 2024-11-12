@@ -4,13 +4,7 @@ import { MockQuestionsContext, MockQuestionsProvider } from "../../../utils/Mock
 import InputDetails from "@/components/InputDetails";
 import Webcam from "react-webcam";
 
-export default function InterviewPage() {
-  return (
-    <MockQuestionsProvider>
-      <InterviewPageContent />
-    </MockQuestionsProvider>
-  );
-}
+
 
 function InterviewPageContent() {
   const { mockQue, setMockQue , showForm , setShowForm} = useContext(MockQuestionsContext);
