@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "on": "nodemon  app.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -12,10 +13,17 @@
     "@google/generative-ai": "^0.21.0",
     "@types/react": "^18.3.12",
     "axios": "^1.7.7",
+    "body-parser": "^1.20.3",
+    "compilex": "^0.7.4",
     "dotenv": "^16.4.5",
+    "express": "^4.21.1",
     "next": "15.0.1",
+    "nodemon": "^3.1.7",
     "react": "^18.3.1",
+    "react-codemirror2": "^8.0.0",
     "react-dom": "^18.3.1",
+    "react-media-recorder": "^1.7.1",
+    "react-speech-recognition": "^3.10.0",
     "react-webcam": "^7.2.0"
   },
   "devDependencies": {
