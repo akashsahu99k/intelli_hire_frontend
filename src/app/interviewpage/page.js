@@ -1,20 +1,24 @@
 "use client";
-import React, { useState, useContext } from "react";
-import { MockQuestionsContext, MockQuestionsProvider } from "../../../utils/MockQuestionsContext";
+import React, { useState } from "react";
 import InputDetails from "@/components/InputDetails";
 import Webcam from "react-webcam";
 
 export default function InterviewPage() {
-  return (
-    <MockQuestionsProvider>
-      <InterviewPageContent />
-    </MockQuestionsProvider>
-  );
-}
+  const [mockQue, setMockQue] = useState();
+  const [showForm, setShowForm] = useState(false);
 
-function InterviewPageContent() {
-  const { mockQue, setMockQue , showForm , setShowForm} = useContext(MockQuestionsContext);
-//   const [showForm, setShowForm] = useContext(MockQuestionsContext);
+  // Job Form Details
+  const [jobDetailsForm, setJobDetailsForm] = useState({
+    jobPos: "",
+    jobDesc: "",
+    jobExp: "",
+    level: "",
+  });
+
+  const handleJobDetailsFormChange = (e) => {
+    setJobDetailsForm((prevJD) => ({...prevJD, [e.target.name]: e.target.value}));
+  }
+
 
   return (
     <>
@@ -24,12 +28,22 @@ function InterviewPageContent() {
             <Webcam className="w-full h-full rounded-xl object-cover" />
           </div>
 
-          <button onClick={() => setShowForm(true)} className="bg-red-400 px-4 py-1.5 rounded-xl">
+          <button
+            onClick={() => setShowForm(true)}
+            className="bg-red-400 px-4 py-1.5 rounded-xl"
+          >
             <h3>Start Interview</h3>
           </button>
         </div>
 
-        {showForm && <InputDetails />}
+        {showForm && (
+          <InputDetails
+            jobDetailsForm={jobDetailsForm}
+            handleJobDetailsFormChange={handleJobDetailsFormChange}
+            setMockQue={setMockQue}
+            setShowForm={setShowForm}
+          />
+        )}
 
         <div className="right h-[100%] w-1/2">
           <div className="Question-section h-full w-full bg-slate-400">
