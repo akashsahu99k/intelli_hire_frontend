@@ -1,26 +1,43 @@
-// Syntax Highlighting and Code Suggestions in CodeMirror
-import React from "react";
-import { UnControlled as CodeMirror } from "react-codemirror2";
-import "codemirror/lib/codemirror.css";
-import "codemirror/mode/javascript/javascript";
-import "codemirror/addon/hint/show-hint";
-import "codemirror/addon/hint/javascript-hint";
-import "codemirror/addon/fold/foldgutter.css";
-import "codemirror/addon/fold/foldgutter";
-import "codemirror/addon/fold/brace-fold";
+import React, { useRef, useState, useEffect } from "react";
+import Editor from '@monaco-editor/react';
 
-function MyEditor() {
+function MyEditor({ lang }) {
+  
+  // Retrieve saved code from local storage or set it to an empty string
+  const [code, setCode] = useState(localStorage.getItem("savedCode") || "");
+  const editorRef = useRef(null);
+
+  // Handle editor mount to save reference
+  function handleEditorDidMount(editor) {
+    editorRef.current = editor;
+  }
+
+  // Save code to state and local storage on change
+  function handleCodeChange(value) {
+    setCode(value);
+    localStorage.setItem("savedCode", value); // Save to local storage
+  }
+  
+  // Show current code in alert (for testing purposes)
+  function showValue() {
+    alert(editorRef.current.getValue());
+  }
+
   return (
-    <CodeMirror
-    options={{
-      lineNumbers: true,
-      mode: "javascript",
-      extraKeys: { "Ctrl-Space": "autocomplete" },
-      foldGutter: true,
-      gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-    }}
-  />
-);
+    <Editor
+      className="max-h-[97%]"
+      value={code}
+      onChange={handleCodeChange}
+      loading = "true"
+      language={lang}
+      options={{
+        suggest: true,
+      }}
+      defaultLanguage="python"
+      defaultValue="// some comment"
+      onMount={handleEditorDidMount}
+    />
+  );
 }
 
 export default MyEditor;

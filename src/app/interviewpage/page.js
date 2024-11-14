@@ -6,9 +6,9 @@ import Webcam from "react-webcam";
 
 
 
-function InterviewPageContent() {
-  const { mockQue, setMockQue , showForm , setShowForm} = useContext(MockQuestionsContext);
-//   const [showForm, setShowForm] = useContext(MockQuestionsContext);
+export default function InterviewPageContent() {
+  // const { mockQue, setMockQue , showForm , setShowForm} = useContext(MockQuestionsContext);
+  // const [showForm, setShowForm] = useContext(MockQuestionsContext);
 
   return (
     <>
