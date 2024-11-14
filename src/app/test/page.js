@@ -1,8 +1,10 @@
 "use client";
-
+import 'regenerator-runtime/runtime';
 import { useReactMediaRecorder } from "react-media-recorder";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import Webcam from "react-webcam";
+
+import dynamic from 'next/dynamic';
 
 
 import { useState } from "react";
